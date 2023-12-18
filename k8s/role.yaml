@@ -1,0 +1,22 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: astro-remote-kpo-role
+  namespace: astro-remote-kpo
+rules:
+  - apiGroups:
+      - ""
+      - "apps"
+      - "batch"
+      - "extensions"
+    resources:
+      - "pods"
+      - "pods/log"
+    verbs:
+      - "create"
+      - "delete"
+      - "describe"
+      - "get"
+      - "list"
+      - "patch"
+      - "update"

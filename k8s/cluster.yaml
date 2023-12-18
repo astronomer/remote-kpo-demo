@@ -1,0 +1,19 @@
+kind: ClusterConfig
+apiVersion: eksctl.io/v1alpha5
+metadata:
+  name: remote-kpo-demo # The name of your cluster
+  region: us-east-1 # The AWS region you would like to use
+  version: "1.28" # The supported kubernetes version you want to use
+
+iam:
+  withOIDC: true # This is needed so that we can use IAM roles to connect to the cluster
+
+managedNodeGroups:
+  - name: astronomer-ng
+    instanceType: m5.large
+    desiredCapacity: 1
+    privateNetworking: false
+
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["all"]
